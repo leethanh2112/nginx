@@ -1,13 +1,12 @@
 ---
 # tasks file for haproxy
-  tasks:
    - name: Install EPEL Release         
      package:         
         name: epel-release         
         state: present
 
-    - name: Install HAProxy 
-      package: 
+   - name: Install Nginx 
+     package: 
         name: nginx         
         state: present
 
