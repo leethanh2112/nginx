@@ -14,7 +14,6 @@
      systemd:        
         name: nginx         
         enabled: yes         
-        state: started
 
    - name: Wait for server to start         
      wait_for:         

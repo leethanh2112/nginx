@@ -1,6 +1,19 @@
 FROM centos:centos7
 MAINTAINER ThanhCL
 
+ENV container docker
+RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == \
+systemd-tmpfiles-setup.service ] || rm -f $i; done); \
+rm -f /lib/systemd/system/multi-user.target.wants/*;\
+rm -f /etc/systemd/system/*.wants/*;\
+rm -f /lib/systemd/system/local-fs.target.wants/*; \
+rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
+rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
+rm -f /lib/systemd/system/basic.target.wants/*;\
+rm -f /lib/systemd/system/anaconda.target.wants/*;
+VOLUME [ "/sys/fs/cgroup" ]
+CMD ["/usr/sbin/init"]
+
 #updated os, install some lib packages
 RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 && \
   rpm --import https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7 && \
@@ -22,8 +35,6 @@ COPY ./ansible/config/ansible.cfg /etc/ansible/ansible.cfg
 RUN /bin/bash -c 'ansible-playbook -i /srv/ansible-nginx/host /srv/ansible-nginx/nginx.yml'
 
 WORKDIR /var/www/html
-
-CMD ["/usr/sbin/init"]
 
 EXPOSE 80 443
 
