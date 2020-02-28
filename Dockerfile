@@ -23,6 +23,8 @@ RUN /bin/bash -c 'ansible-playbook -i /srv/ansible-nginx/host /srv/ansible-nginx
 
 WORKDIR /var/www/html
 
+CMD ["/usr/sbin/init"]
+
 EXPOSE 80 443
 
 
