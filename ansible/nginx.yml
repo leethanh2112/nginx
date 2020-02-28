@@ -1,0 +1,10 @@
+---
+# This playbook deploys the haproxyservers
+
+- name: deploy the haproxyservers
+  hosts: haproxyservers
+  become_user: root
+  become: yes
+
+  roles:
+    - nginx
