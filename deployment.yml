@@ -1,28 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodejs
+  name: nginx
   namespace: system-uat
   labels:
-   app: nodejs
+   app: nginx
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: nodejs			
+      app: nginx	
   template:
     metadata:
       labels:
-        app: nodejs	
+        app: nginx
     spec:
       containers:
-      - name: nodejs
-        image: docker.registry.local:5000/nodejs:v1.${BUILD_NUMBER}
+      - name: nginx
+        image: docker.registry.local:5000/nginx:v1.${BUILD_NUMBER}
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodejs
+  name: nginx
   namespace: system-uat
 spec:
   type: NodePort
@@ -31,4 +31,4 @@ spec:
       port: 8081
       nodePort: 30009
   selector:
-    app: nodejs
+    app: nginx
