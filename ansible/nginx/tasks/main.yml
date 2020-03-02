@@ -10,7 +10,8 @@
         name: nginx         
         state: present
 
-   - firewalld:
-        port: 80/tcp
-        permanent: true         
-        state: enabled
+   - name: Stop and disable firewalld.
+     service:
+       name: firewalld
+       state: stopped
+       enabled: False
