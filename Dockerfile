@@ -31,9 +31,6 @@ RUN echo "ZONE=\"Asia/Ho_Chi_Minh\"" > /etc/sysconfig/clock && \
   rm -rf /etc/localtime && \
   ln -s /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime
 
-RUN echo "nginx on CentOS7" > /usr/share/nginx/html/index.html
-
-
 
 RUN systemctl enable nginx.service
 RUN systemctl enable named.service 
