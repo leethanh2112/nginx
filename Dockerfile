@@ -19,7 +19,7 @@ RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 && \
   rpm --import https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7 && \
   yum clean all && \
   yum install -y epel-release && \
-  yum install -y telnet tcptraceroute  mtr bind bind-utils nginx ansible git patch libselinux-python libsemanage-python libselinux-python ntp unzip wget make mlocate gcc net-tools && \
+  yum install -y telnet tcptraceroute  mtr bind-utils nginx ansible git patch libselinux-python libsemanage-python libselinux-python ntp unzip wget make mlocate gcc net-tools && \
   rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
 
 # Configure Nginx and apply fix for very long server names
@@ -31,9 +31,9 @@ RUN echo "ZONE=\"Asia/Ho_Chi_Minh\"" > /etc/sysconfig/clock && \
   rm -rf /etc/localtime && \
   ln -s /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime
 
-
+RUN systemctl start nginx.service
 RUN systemctl enable nginx.service
-RUN systemctl enable named.service 
+
 
 
 
