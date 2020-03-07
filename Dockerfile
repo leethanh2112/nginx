@@ -31,8 +31,14 @@ RUN echo "ZONE=\"Asia/Ho_Chi_Minh\"" > /etc/sysconfig/clock && \
   rm -rf /etc/localtime && \
   ln -s /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime
 
+RUN echo "nginx on CentOS7" > /usr/share/nginx/html/index.html
+
+
+
 RUN systemctl enable nginx.service
 RUN systemctl enable named.service 
+
+
 
 # Without this, init won't start the enabled services and exec'ing and starting
 # them reports "Failed to get D-Bus connection: Operation not permitted".
@@ -41,7 +47,7 @@ VOLUME /run /tmp
 # Don't know if it's possible to run services without starting this
 CMD /usr/sbin/init
 
-
+EXPOSE 80 443
 
 
 
