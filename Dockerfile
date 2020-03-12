@@ -17,8 +17,7 @@ RUN echo "ZONE=\"Asia/Ho_Chi_Minh\"" > /etc/sysconfig/clock && \
 RUN wget -P /etc/yum.repos.d https://copr.fedorainfracloud.org/coprs/czanik/syslog-ng324/repo/epel-7/czanik-syslog-ng325-epel-7.repo
 RUN yum install -y syslog-ng 
 
-RUN curl  -OL https://github.com/anguenot/syslogng_kafka/tarball/master
-RUN pip install -e .
+RUN pip install syslogng_kafka
 
 ADD kafka.conf /etc/syslog-ng/conf.d/kafka.conf
 ADD index.html /usr/share/nginx/html/index.html
