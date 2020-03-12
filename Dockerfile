@@ -23,12 +23,12 @@ ADD kafka.conf /etc/syslog-ng/conf.d/kafka.conf
 ADD index.html /usr/share/nginx/html/index.html
 
 EXPOSE 80/tcp
+EXPOSE 514/udp
 
 # Forward request logs to Docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
   && ln -sf /dev/stderr /var/log/nginx/error.log
 
-EXPOSE 80
 
 STOPSIGNAL SIGTERM
 
