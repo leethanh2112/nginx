@@ -23,6 +23,9 @@ ADD kafka.conf /etc/syslog-ng/conf.d/kafka.conf
 ADD syslog-ng.conf /etc/syslog-ng/syslog-ng.conf
 ADD index.html /usr/share/nginx/html/index.html
 
+ADD start.sh /
+RUN chmod +x /start.sh
+
 EXPOSE 80/tcp
 EXPOSE 514/udp
 
@@ -34,6 +37,5 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 
 STOPSIGNAL SIGTERM
 
-ENTRYPOINT ["/usr/sbin/syslog-ng", "-F"]
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/start.sh"]
 
