@@ -20,10 +20,12 @@ RUN yum install -y syslog-ng
 RUN pip install syslogng_kafka
 
 ADD kafka.conf /etc/syslog-ng/conf.d/kafka.conf
+ADD syslog-ng.conf /etc/syslog-ng/syslog-ng.conf
 ADD index.html /usr/share/nginx/html/index.html
 
 EXPOSE 80/tcp
 EXPOSE 514/udp
+
 
 # Forward request logs to Docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
@@ -32,6 +34,6 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 
 STOPSIGNAL SIGTERM
 
-CMD ["/usr/sbin/syslog-ng", "-F"]
+ENTRYPOINT ["/usr/sbin/syslog-ng", "-F"]
 CMD ["nginx", "-g", "daemon off;"]
 
