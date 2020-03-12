@@ -24,5 +24,14 @@ ADD index.html /usr/share/nginx/html/index.html
 
 EXPOSE 80/tcp
 
+# Forward request logs to Docker log collector
+RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+  && ln -sf /dev/stderr /var/log/nginx/error.log
+
+EXPOSE 80
+
+STOPSIGNAL SIGTERM
+
+CMD ["nginx", "-g", "daemon off;"]
 ENTRYPOINT ["/usr/sbin/syslog-ng", "-F"]
-CMD ["nginx", "-g daemon off;"]
+
