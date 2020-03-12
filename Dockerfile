@@ -15,7 +15,7 @@ RUN echo "ZONE=\"Asia/Ho_Chi_Minh\"" > /etc/sysconfig/clock && \
   ln -s /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime
 
 RUN wget -P /etc/yum.repos.d https://copr.fedorainfracloud.org/coprs/czanik/syslog-ng324/repo/epel-7/czanik-syslog-ng325-epel-7.repo
-RUN yum install -y syslog-ng 
+RUN yum install -y syslog-ng syslog-ng-python
 
 RUN pip install syslogng_kafka
 
