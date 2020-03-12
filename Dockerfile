@@ -32,6 +32,6 @@ EXPOSE 80
 
 STOPSIGNAL SIGTERM
 
-CMD ["syslog-ng", "-g", "daemon off;"]
+CMD ["/usr/sbin/syslog-ng", "-F"]
 CMD ["nginx", "-g", "daemon off;"]
 
