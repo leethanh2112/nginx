@@ -20,7 +20,6 @@ RUN yum install -y syslog-ng syslog-ng-python
 RUN pip install syslogng_kafka
 
 ADD kafka.conf /etc/syslog-ng/conf.d/kafka.conf
-ADD syslog-ng.conf /etc/syslog-ng/syslog-ng.conf
 ADD index.html /usr/share/nginx/html/index.html
 
 ADD start.sh /
