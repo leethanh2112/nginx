@@ -6,7 +6,7 @@ RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 && \
   rpm --import https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7 && \
   yum clean all && \
   yum install -y epel-release && \
-  yum install -y nginx python-pip python-devel telnet tcptraceroute mtr git patch libselinux-python libsemanage-python libselinux-python ntp unzip wget make mlocate gcc net-tools && \
+  yum install -y nginx python python-requests python-pip python-devel telnet tcptraceroute mtr git patch libselinux-python libsemanage-python libselinux-python ntp unzip wget make mlocate gcc net-tools && \
   rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
 
 #setup timezone
