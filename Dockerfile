@@ -23,7 +23,6 @@ ADD kafka.conf /etc/syslog-ng/conf.d/kafka.conf
 ADD index.html /usr/share/nginx/html/index.html
 
 EXPOSE 80/tcp
-EXPOSE 514/udp
 
 ENTRYPOINT ["/usr/sbin/syslog-ng", "-F"]
 CMD ["nginx", "-g daemon off;"]
