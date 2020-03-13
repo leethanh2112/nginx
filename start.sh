@@ -1,4 +1,4 @@
 #!/bin/bash
 /usr/sbin/nginx -g "daemon off;"
-/usr/sbin/syslog-ng -F
+/usr/sbin/syslog-ng
 
