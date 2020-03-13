@@ -21,6 +21,10 @@ RUN pip install syslogng_kafka
 
 ADD kafka.conf /etc/syslog-ng/conf.d/kafka.conf
 ADD index.html /usr/share/nginx/html/index.html
+VOLUME /usr/share/nginx/html
+VOLUME /etc/nginx
+VOLUME /etc/syslog-ng
+VOLUME /var/log/nginx/log
 
 ADD start.sh /
 RUN chmod +x /start.sh
@@ -37,5 +41,4 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 STOPSIGNAL SIGTERM
 
 CMD ["/start.sh"]
-CMD ["nginx", "-g", "daemon off;"]
 
