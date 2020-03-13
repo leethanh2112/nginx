@@ -1,4 +1,4 @@
 #!/bin/bash
-#nginx -g "daemon off;"
+/usr/sbin/nginx -s reopen
 /usr/sbin/syslog-ng -F
 
