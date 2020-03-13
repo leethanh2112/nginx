@@ -40,5 +40,5 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 
 STOPSIGNAL SIGTERM
 
-CMD nginx -g "daemon off;" ; /usr/sbin/syslog-ng -F
+CMD ["nginx", "-g" "daemon off;" ; "/usr/sbin/syslog-ng", "-F"]
 
