@@ -30,6 +30,7 @@ ADD start.sh /
 RUN chmod +x /start.sh
 
 EXPOSE 80/tcp
+EXPOSE 443/tcp
 EXPOSE 514/udp
 
 
@@ -40,5 +41,5 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 
 STOPSIGNAL SIGTERM
 
-CMD ["nginx", "-g", "daemon off;" ;  "/usr/sbin/syslog-ng", "-F"]
+CMD ["/start.sh"]
 
