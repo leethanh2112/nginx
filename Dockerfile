@@ -41,5 +41,5 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 
 STOPSIGNAL SIGTERM
 
-CMD ["/start.sh"]
+CMD ["./start.sh"]
 
